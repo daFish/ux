@@ -1,0 +1,14 @@
+{# @block content The default block #}
+<div
+    id="{{ _accordion_content_id }}"
+    role="region"
+    aria-labelledby="{{ _accordion_trigger_id }}"
+    class="overflow-hidden text-sm transition-all"
+    data-accordion-target="content"
+    data-state="{{ open ? 'open' : 'closed' }}"
+    {% if not open %}hidden{% endif %}
+>
+    <div class="{{ 'pt-0 pb-4 ' ~ attributes.render('class')|tailwind_merge }}" {{ attributes }}>
+        {%- block content %}{% endblock -%}
+    </div>
+</div>

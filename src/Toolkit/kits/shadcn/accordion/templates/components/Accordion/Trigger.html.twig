@@ -1,0 +1,16 @@
+{# @block content The default block #}
+<h3 class="flex">
+    <button
+        type="button"
+        id="{{ _accordion_trigger_id }}"
+        class="{{ 'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 ' ~ attributes.render('class')|tailwind_merge }}"
+        aria-expanded="{{ open ? 'true' : 'false' }}"
+        aria-controls="{{ _accordion_content_id }}"
+        data-accordion-target="trigger"
+        data-action="click->accordion#toggle"
+        {{ attributes }}
+    >
+        {%- block content %}{% endblock -%}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground pointer-events-none size-4 shrink-0 transition-transform duration-200" style="{{ open ? 'transform: rotate(180deg)' : '' }}" data-accordion-target="icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+</h3>

@@ -1,0 +1,12 @@
+{# @prop type string The type of accordion, either 'single' (only one item can be open at a time) or 'multiple' (multiple items can be open), default to 'single' #}
+{# @prop collapsible boolean When type is 'single', allows closing content when clicking the open item trigger, default to `false` #}
+{# @block content The default block #}
+{%- props type = 'single', collapsible = false -%}
+
+<div class="{{ 'w-full' ~ (' ' ~ attributes.render('class'))|tailwind_merge }}" {{ attributes.defaults({
+    'data-controller': 'accordion',
+    'data-accordion-type-value': type,
+    'data-accordion-collapsible-value': collapsible ? 'true' : 'false',
+}) }}>
+    {% block content %}{% endblock %}
+</div>

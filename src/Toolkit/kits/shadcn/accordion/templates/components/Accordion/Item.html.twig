@@ -1,0 +1,16 @@
+{# @prop value string Unique identifier for the accordion item #}
+{# @prop open boolean Whether the item is open by default, default to `false` #}
+{# @block content The default block #}
+{%- props value, open = false -%}
+
+{%- set _accordion_item_id = 'accordion-item-' ~ value -%}
+{%- set _accordion_trigger_id = _accordion_item_id ~ '-trigger' -%}
+{%- set _accordion_content_id = _accordion_item_id ~ '-content' -%}
+<div
+    class="{{ 'border-b last:border-b-0 ' ~ attributes.render('class')|tailwind_merge }}"
+    data-accordion-target="item"
+    data-state="{{ open ? 'open' : 'closed' }}"
+    {{ attributes }}
+>
+    {%- block content %}{% endblock -%}
+</div>
